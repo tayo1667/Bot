@@ -1,3 +1,5 @@
+
+
 /* General Reset */
 * {
     margin: 0;
@@ -5,24 +7,23 @@
     box-sizing: border-box;
 }
 
-/* Body */
+/* Body Styling */
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #1e2a47, #4e4376); /* Dark gradient for a techy feel */
-    color: #f1f1f1;
-    height: 100vh;
+    background: linear-gradient(135deg, #141E30, #243B55); /* Dark gradient */
+    color: #F1F1F1;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
     overflow: hidden;
     text-align: center;
-    background-size: cover;
-    animation: backgroundAnimation 10s infinite linear; /* Smooth background animation */
+    animation: bgAnimation 10s infinite linear;
 }
 
 /* Background Animation */
-@keyframes backgroundAnimation {
+@keyframes bgAnimation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
@@ -30,91 +31,120 @@ body {
 
 /* Main Container */
 .container {
-    max-width: 900px;
+    max-width: 800px;
     width: 100%;
     padding: 20px;
     border-radius: 15px;
-    background-color: rgba(0, 0, 0, 0.7); /* Slightly darker container */
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(12px); /* Glassmorphism effect */
-}
-
-/* Chat Container */
-.chat-container {
-    max-width: 450px;
-    width: 100%;
-    background-color: #1f1f1f;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.75);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(10px);
-    transition: all 0.4s ease;
 }
 
 /* Chat Box */
 .chat-box {
-    height: 300px; /* Adjust height for smaller screens */
+    height: 350px;
     overflow-y: auto;
     margin-bottom: 15px;
     padding: 15px;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 12px;
-    border: 1px solid #444;
-    font-size: 14px;
+    border: 1px solid #555;
+    font-size: 16px;
     color: #ddd;
 }
 
-/* Chat Messages */
-.chat-box .bot-message,
-.chat-box .user-message {
+.chat-box .message {
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 12px;
     margin-bottom: 10px;
-    max-width: 90%; /* Shrink messages for small screens */
+    max-width: 80%;
     font-size: 14px;
-    line-height: 1.4;
+    line-height: 1.5;
+}
+
+.bot-message {
+    background-color: #243B55;
+    color: #fff;
+    text-align: left;
+}
+
+.user-message {
+    background-color: #4CAF50;
+    color: #fff;
+    text-align: right;
+    margin-left: auto;
 }
 
 /* Buttons */
 button {
-    padding: 10px 20px;
-    font-size: 14px; /* Smaller buttons for phones */
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    border: none;
+    border-radius: 25px;
     cursor: pointer;
-    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #66BB6A, #388E3C);
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
 }
 
 /* Input Fields */
 input[type="text"] {
-    padding: 10px;
-    width: 90%; /* Full-width inputs for smaller screens */
-    margin-bottom: 10px;
-    font-size: 14px;
+    width: calc(100% - 30px);
+    padding: 12px 15px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border: 1px solid #444;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ddd;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
 }
 
 /* Media Queries */
-@media screen and (max-width: 768px) {
-    body {
-        flex-direction: column;
-        padding: 10px;
-    }
-
+@media (max-width: 768px) {
     .container {
         max-width: 100%;
         padding: 15px;
     }
 
-    .chat-container {
-        max-width: 100%;
-        padding: 15px;
+    .chat-box {
+        height: 300px;
     }
 
+    button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    input[type="text"] {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
     .chat-box {
         height: 250px;
-        padding: 10px;
+        font-size: 12px;
     }
 
     button {
-        padding: 8px 15px;
+        padding: 8px 12px;
         font-size: 12px;
     }
 
@@ -122,20 +152,3 @@ input[type="text"] {
         font-size: 12px;
     }
 }
-
-@media screen and (max-width: 480px) {
-    .chat-box {
-        font-size: 12px;
-        height: 200px;
-    }
-
-    button {
-        padding: 6px 10px;
-        font-size: 10px;
-    }
-
-    input[type="text"] {
-        font-size: 10px;
-    }
-}
-
